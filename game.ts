@@ -27,14 +27,14 @@ class Game {
       // create a basic light, aiming 0,1,0 - meaning, to the sky
       this._light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), this._scene);
 
-      // create a built-in "sphere" shape; its constructor takes 5 params: name, width, depth, subdivisions, scene
-      let sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, this._scene);
+      // create a built-in "sphere" shape; with 16 segments and diameter of 2
+      let sphere = BABYLON.MeshBuilder.CreateSphere('sphere1', {segments: 16, diameter: 2}, this._scene);
 
       // move the sphere upward 1/2 of its height
       sphere.position.y = 1;
 
-      // create a built-in "ground" shape; its constructor takes the same 5 params as the sphere's one
-      let ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, this._scene);
+      // create a built-in "ground" shape
+      let ground = BABYLON.MeshBuilder.CreateGround('ground1', {width: 6, height: 6, subdivisions: 2}, this._scene);
   }
 
   animate() : void {
